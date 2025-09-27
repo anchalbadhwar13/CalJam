@@ -10,44 +10,43 @@ const Dashboard: React.FC = () => {
   const [isPlayerVisible, setIsPlayerVisible] = useState(false);
 
   // Spotify playlist IDs (just the ID part, not full URI)
-   
-  // const activities = [
-  //   { 
-  //     id: 1, 
-  //     name: 'Gym Spotify Playlist', 
-  //     time: '00:00 to 5:00am', 
-  //     spotifyId: '37i9dQZF1DXcBWIGoYBM5M', // Lo-Fi Beats
-  //     description: 'Chill lo-fi beats for focused work'
-  //   },
-  //   { 
-  //     id: 2, 
-  //     name: 'Focus Study Session', 
-  //     time: '9:00am to 11:00am', 
-  //     spotifyId: '37i9dQZF1DX8Uebhn9wzrS', // Focus Flow
-  //     description: 'Minimal electronic for deep concentration'
-  //   },
-  //   { 
-  //     id: 3, 
-  //     name: 'Deep Work', 
-  //     time: '2:00pm to 4:00pm', 
-  //     spotifyId: '37i9dQZF1DX3PFzdbtx1Us', // Coding Mode
-  //     description: 'Ambient sounds for programming'
-  //   },
-  //   { 
-  //     id: 4, 
-  //     name: 'Workout Mix', 
-  //     time: '6:00pm to 7:00pm', 
-  //     spotifyId: '37i9dQZF1DX76Wlfdnj7AP', // Workout
-  //     description: 'Energetic tracks for exercise'
-  //   },
-  //   { 
-  //     id: 5, 
-  //     name: 'Relaxing Piano', 
-  //     time: '8:00pm to 10:00pm', 
-  //     spotifyId: '37i9dQZF1DX4sWSpwq3LiO', // Peaceful Piano
-  //     description: 'Calm piano for winding down'
-  //   }
-  // ];
+  const activities = [
+    { 
+      id: 1, 
+      name: 'Gym Spotify Playlist', 
+      time: '00:00 to 5:00am', 
+      spotifyId: '37i9dQZF1DXcBWIGoYBM5M', // Lo-Fi Beats
+      description: 'Chill lo-fi beats for focused work'
+    },
+    { 
+      id: 2, 
+      name: 'Focus Study Session', 
+      time: '9:00am to 11:00am', 
+      spotifyId: '37i9dQZF1DX8Uebhn9wzrS', // Focus Flow
+      description: 'Minimal electronic for deep concentration'
+    },
+    { 
+      id: 3, 
+      name: 'Deep Work', 
+      time: '2:00pm to 4:00pm', 
+      spotifyId: '37i9dQZF1DX3PFzdbtx1Us', // Coding Mode
+      description: 'Ambient sounds for programming'
+    },
+    { 
+      id: 4, 
+      name: 'Workout Mix', 
+      time: '6:00pm to 7:00pm', 
+      spotifyId: '37i9dQZF1DX76Wlfdnj7AP', // Workout
+      description: 'Energetic tracks for exercise'
+    },
+    { 
+      id: 5, 
+      name: 'Relaxing Piano', 
+      time: '8:00pm to 10:00pm', 
+      spotifyId: '37i9dQZF1DX4sWSpwq3LiO', // Peaceful Piano
+      description: 'Calm piano for winding down'
+    }
+  ];
 
   const assignments = [
     { id: 1, name: 'Math Homework', due: 'Tomorrow 10:00am', completed: false },
@@ -55,7 +54,7 @@ const Dashboard: React.FC = () => {
     { id: 3, name: 'English Essay', due: 'Oct 5, 5:00pm', completed: true }
   ];
 
-  const timeSlots = ['1a.m', '2a.m', '3a.m', '4a.m', '5a.m', '6a.m', '7a.m', '8a.m', '9a.m', '10a.m', '11a.m', '12p.m'];
+  
 
   const handleActivitySelect = (activity: any) => {
     setCurrentActivity(activity.name);
@@ -78,11 +77,11 @@ const Dashboard: React.FC = () => {
     const spotifyUrl = prompt('Enter Spotify playlist URL:');
     
     if (name && time && spotifyUrl) {
-      // Extract Spotify ID from URL
+      
       const spotifyId = spotifyUrl.split('/').pop()?.split('?')[0];
       if (spotifyId) {
         alert(`Added: ${name} - Spotify playlist will be available`);
-        // In a real app, you'd add this to your activities state
+       
       }
     }
   };
@@ -132,9 +131,7 @@ const Dashboard: React.FC = () => {
                       <h4>{assignment.name}</h4>
                       <span className="due-date">Due: {assignment.due}</span>
                     </div>
-                    <div className="assignment-status">
-                      {assignment.completed ? '✅' : '⏳'}
-                    </div>
+                    
                   </div>
                 ))}
               </div>
@@ -206,22 +203,14 @@ const Dashboard: React.FC = () => {
               )}
             </div>
 
-            {/* Time Schedule */}
-            <div className="time-schedule">
-              <h4>Today's Schedule</h4>
-              <div className="time-slots">
-                {timeSlots.map((slot, index) => (
-                  <div key={index} className="time-slot">
-                    <span className="time-label">{slot}</span>
-                    <div className="time-line"></div>
-                  </div>
-                ))}
+           
+            
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      
+    
   );
 };
 
