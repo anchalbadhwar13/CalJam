@@ -1,42 +1,41 @@
-export var items: Item[] = [];
+export var activities: Activity[] = [];
 export var activityTypes: string[] = ['Study', 'Workout', 'Yoga', 'Commute', 'Cooking', 'Games', 'Party', 'Sleep']; 
+export var idCounter = 0; 
 
-export class Item {
+export class Activity {
+    id: number; 
     name: string;
-    spotifyHyperlink: string; 
+    spotifyId: string; 
+    activityType: string; 
+    timeStart: string; 
+    timeEnd: string; 
+
 
     constructor() {
+        this.id = idCounter; 
         this.name = "Unnamed item"; 
-        this.spotifyHyperlink = ""; 
+        this.spotifyId = ""; 
+        this.activityType = "Study"; 
+        this.timeStart = "12:00AM"; 
+        this.timeEnd = "12:01AM"; 
+
+        idCounter = idCounter + 1; 
     }
 
     getName(): string {
         return this.name; 
     }
 
-    getSpotifyHyperlink(): string {
-        return this.spotifyHyperlink; 
+    getSpotifyId(): string {
+        return this.spotifyId; 
     }
 
     setName(name: string): void {
         this.name = name; 
     }
 
-    setSpotifyHyperlink(spotifyHyperlink: string): void {
-        this.spotifyHyperlink = spotifyHyperlink;
-    }
-}
-
-export class Activity extends Item {
-    activityType: string; 
-    timeStart: string; 
-    timeEnd: string; 
-
-    constructor() {
-        super(); 
-        this.activityType = "Study"; 
-        this.timeStart = "12:00AM"; 
-        this.timeEnd = "12:01AM"; 
+    setSpotifyId(spotifyId: string): void {
+        this.spotifyId = spotifyId;
     }
 
     getActivityType(): string {
@@ -67,17 +66,16 @@ export class Activity extends Item {
     }
 }
 
-
 export function addActivity(name: string, activityType: string, timeStart: string, timeEnd: string): void {
     var activity: Activity = new Activity(); 
 
     activity.setName(name); 
-    activity.setSpotifyHyperlink(generateSpotifyPlaylistHyperlink(activityType)); 
+    activity.setSpotifyId(generateSpotifyPlaylistHyperlink(activityType)); 
     activity.setActivityType(activityType); 
     activity.setTimeStart(timeStart); 
     activity.setTimeEnd(timeEnd); 
 
-    items.push(activity); 
+    activities.push(activity); 
 }
 
 export function generateSpotifyPlaylistHyperlink(activityType: string): string {
@@ -85,31 +83,31 @@ export function generateSpotifyPlaylistHyperlink(activityType: string): string {
 
     switch(activityType) {
         case "Study": 
-            playlistHyperlink = ''; 
+            playlistHyperlink = '37i9dQZF1DX8Uebhn9wzrS'; 
             break; 
         case "Workout": 
-            playlistHyperlink = ''; 
+            playlistHyperlink = '37i9dQZF1EIgzSCNweQzPQ'; 
             break;  
         case "Yoga": 
-            playlistHyperlink = '';     
+            playlistHyperlink = '37i9dQZF1DX9uKNf5jGX6m';     
             break;  
         case "Commute": 
-            playlistHyperlink = ''; 
+            playlistHyperlink = '37i9dQZF1DWWMOmoXKqHTD'; 
             break;  
         case "Cooking": 
-            playlistHyperlink = ''; 
+            playlistHyperlink = '5XTJj1e28HuFxzDwgc2AUj'; 
             break;  
         case "Games": 
-            playlistHyperlink = ''; 
+            playlistHyperlink = '37i9dQZF1DWTyiBJ6yEqeu'; 
             break;
         case "Party": 
-            playlistHyperlink = ''; 
+            playlistHyperlink = '37i9dQZF1DWWylYLMvjuRG'; 
             break;
         case "Sleep": 
-            playlistHyperlink = ''; 
+            playlistHyperlink = '37i9dQZF1DWZd79rJ6a7lp'; 
             break;
         default: 
-            playlistHyperlink = ''; 
+            playlistHyperlink = '37i9dQZF1DX8Uebhn9wzrS'; 
     }
 
     return playlistHyperlink; 
