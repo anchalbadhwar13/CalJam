@@ -9,45 +9,6 @@ const Dashboard: React.FC = () => {
   const [embedPlayer, setEmbedPlayer] = useState<string>('');
   const [isPlayerVisible, setIsPlayerVisible] = useState(false);
 
-  // Spotify playlist IDs (just the ID part, not full URI)
-  const activities = [
-    { 
-      id: 1, 
-      name: 'Gym Spotify Playlist', 
-      time: '00:00 to 5:00am', 
-      spotifyId: '37i9dQZF1DXcBWIGoYBM5M', // Lo-Fi Beats
-      description: 'Chill lo-fi beats for focused work'
-    },
-    { 
-      id: 2, 
-      name: 'Focus Study Session', 
-      time: '9:00am to 11:00am', 
-      spotifyId: '37i9dQZF1DX8Uebhn9wzrS', // Focus Flow
-      description: 'Minimal electronic for deep concentration'
-    },
-    { 
-      id: 3, 
-      name: 'Deep Work', 
-      time: '2:00pm to 4:00pm', 
-      spotifyId: '37i9dQZF1DX3PFzdbtx1Us', // Coding Mode
-      description: 'Ambient sounds for programming'
-    },
-    { 
-      id: 4, 
-      name: 'Workout Mix', 
-      time: '6:00pm to 7:00pm', 
-      spotifyId: '37i9dQZF1DX76Wlfdnj7AP', // Workout
-      description: 'Energetic tracks for exercise'
-    },
-    { 
-      id: 5, 
-      name: 'Relaxing Piano', 
-      time: '8:00pm to 10:00pm', 
-      spotifyId: '37i9dQZF1DX4sWSpwq3LiO', // Peaceful Piano
-      description: 'Calm piano for winding down'
-    }
-  ];
-
   const assignments = [
     { id: 1, name: 'Math Homework', due: 'Tomorrow 10:00am', completed: false },
     { id: 2, name: 'Science Project', due: 'Oct 3, 2:00pm', completed: false },
