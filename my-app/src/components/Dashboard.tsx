@@ -70,27 +70,12 @@ const Dashboard: React.FC = () => {
     navigate('/');
   };
 
-  const addActivity = () => {
-    const name = prompt('Enter activity name:');
-    const time = prompt('Enter time (e.g., 00:00 to 5:00am):');
-    const spotifyUrl = prompt('Enter Spotify playlist URL:');
-    
-    if (name && time && spotifyUrl) {
-      
-      const spotifyId = spotifyUrl.split('/').pop()?.split('?')[0];
-      if (spotifyId) {
-        alert(`Added: ${name} - Spotify playlist will be available`);
-       
-      }
-    }
+ const addActivity = () => {
+    navigate('/activity'); // Navigate to Activity page instead of using prompt
   };
 
   const addAssignment = () => {
-    const name = prompt('Enter assignment name:');
-    const due = prompt('Enter due date:');
-    if (name && due) {
-      alert(`Added: ${name} due ${due}`);
-    }
+    navigate('/assignment'); // Navigate to Assignment page instead of using prompt
   };
 
   return (
@@ -108,11 +93,12 @@ const Dashboard: React.FC = () => {
         </nav>
       </header>
 
-      <div className="dashboard-container container">
+     <div className="dashboard-container container">
         <div className="dashboard-layout">
           {/* Left Column */}
           <div className="left-column">
             <div className="add-buttons">
+              {/* These buttons now navigate to new pages */}
               <button className="add-btn primary" onClick={addActivity}>
                 <span>+</span> Add an activity
               </button>
