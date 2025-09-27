@@ -746,3 +746,88 @@ body {
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
+/* Spotify Embed Styles */
+.player-section {
+  background: white;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.player-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.toggle-player-btn {
+  background: #1DB954;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 15px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.spotify-embed-container {
+  background: #2d2d2d;
+  border-radius: 10px;
+  padding: 15px;
+}
+
+.spotify-embed {
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.player-actions {
+  display: flex;
+  justify-content: center;
+}
+
+.open-spotify-btn {
+  background: #1DB954;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.no-music-selected {
+  text-align: center;
+  padding: 30px;
+  background: #f8f9fa;
+  border-radius: 10px;
+  color: #666;
+}
+
+.no-music-selected i {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  display: block;
+  color: #1DB954;
+}
+
+/* Activity Description */
+.activity-desc {
+  font-size: 0.8rem;
+  color: #888;
+  margin-top: 5px;
+}
+
+/* Assignment Status */
+.assignment-status {
+  font-size: 1.2rem;
+}
+
+.assignment-card.completed {
+  opacity: 0.7;
+  background: #f0fff0;
+}

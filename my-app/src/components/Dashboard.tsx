@@ -5,38 +5,83 @@ import '../App.css';
 const Dashboard: React.FC = () => {
   const navigate = useNavigate();
   const [currentActivity, setCurrentActivity] = useState('Grym Spotify Playlist');
-  const [currentTime, setCurrentTime] = useState('2:06 PM');
-  const [currentDate, setCurrentDate] = useState('Sat Sep 27');
-  
-  // Sample activities data
+  const [embedPlayer, setEmbedPlayer] = useState<string>('');
+  const [isPlayerVisible, setIsPlayerVisible] = useState(false);
+
+  // Spotify playlist IDs (just the ID part, not full URI)
   const activities = [
-    { id: 1, name: 'Grym Spotify Playlist', time: '00:00 to 5:00am', spotifyUrl: 'https://open.spotify.com/playlist/37i9dQZF1DXcBWIGoYBM5M' },
-    { id: 2, name: 'Focus Study Session', time: '9:00am to 11:00am', spotifyUrl: 'https://open.spotify.com/playlist/37i9dQZF1DX8Uebhn9wzrS' },
-    { id: 3, name: 'Workout Mix', time: '6:00pm to 7:00pm', spotifyUrl: 'https://open.spotify.com/playlist/37i9dQZF1DX76Wlfdnj7AP' }
+    { 
+      id: 1, 
+      name: 'Gym Spotify Playlist', 
+      time: '00:00 to 5:00am', 
+      spotifyId: '37i9dQZF1DXcBWIGoYBM5M', // Lo-Fi Beats
+      description: 'Chill lo-fi beats for focused work'
+    },
+    { 
+      id: 2, 
+      name: 'Focus Study Session', 
+      time: '9:00am to 11:00am', 
+      spotifyId: '37i9dQZF1DX8Uebhn9wzrS', // Focus Flow
+      description: 'Minimal electronic for deep concentration'
+    },
+    { 
+      id: 3, 
+      name: 'Deep Work', 
+      time: '2:00pm to 4:00pm', 
+      spotifyId: '37i9dQZF1DX3PFzdbtx1Us', // Coding Mode
+      description: 'Ambient sounds for programming'
+    },
+    { 
+      id: 4, 
+      name: 'Workout Mix', 
+      time: '6:00pm to 7:00pm', 
+      spotifyId: '37i9dQZF1DX76Wlfdnj7AP', // Workout
+      description: 'Energetic tracks for exercise'
+    },
+    { 
+      id: 5, 
+      name: 'Relaxing Piano', 
+      time: '8:00pm to 10:00pm', 
+      spotifyId: '37i9dQZF1DX4sWSpwq3LiO', // Peaceful Piano
+      description: 'Calm piano for winding down'
+    }
   ];
 
   const assignments = [
-    { id: 1, name: 'Math Homework', due: 'Tomorrow 10:00am' },
-    { id: 2, name: 'Science Project', due: 'Oct 3, 2:00pm' },
-    { id: 3, name: 'English Essay', due: 'Oct 5, 5:00pm' }
+    { id: 1, name: 'Math Homework', due: 'Tomorrow 10:00am', completed: false },
+    { id: 2, name: 'Science Project', due: 'Oct 3, 2:00pm', completed: false },
+    { id: 3, name: 'English Essay', due: 'Oct 5, 5:00pm', completed: true }
   ];
 
   const timeSlots = ['1a.m', '2a.m', '3a.m', '4a.m', '5a.m', '6a.m', '7a.m', '8a.m', '9a.m', '10a.m', '11a.m', '12p.m'];
+
+  const handleActivitySelect = (activity: any) => {
+    setCurrentActivity(activity.name);
+    const embedUrl = `https://open.spotify.com/embed/playlist/${activity.spotifyId}`;
+    setEmbedPlayer(embedUrl);
+    setIsPlayerVisible(true);
+  };
+
+  const togglePlayerVisibility = () => {
+    setIsPlayerVisible(!isPlayerVisible);
+  };
 
   const handleBackToHome = () => {
     navigate('/');
   };
 
-  const openSpotify = (url: string) => {
-    window.open(url, '_blank');
-  };
-
   const addActivity = () => {
     const name = prompt('Enter activity name:');
     const time = prompt('Enter time (e.g., 00:00 to 5:00am):');
-    if (name && time) {
-      // In a real app, you would add to state or send to backend
-      alert(`Added: ${name} at ${time}`);
+    const spotifyUrl = prompt('Enter Spotify playlist URL:');
+    
+    if (name && time && spotifyUrl) {
+      // Extract Spotify ID from URL
+      const spotifyId = spotifyUrl.split('/').pop()?.split('?')[0];
+      if (spotifyId) {
+        alert(`Added: ${name} - Spotify playlist will be available`);
+        // In a real app, you'd add this to your activities state
+      }
     }
   };
 
@@ -44,20 +89,18 @@ const Dashboard: React.FC = () => {
     const name = prompt('Enter assignment name:');
     const due = prompt('Enter due date:');
     if (name && due) {
-      // In a real app, you would add to state or send to backend
       alert(`Added: ${name} due ${due}`);
     }
   };
 
   return (
     <div className="dashboard">
-      {/* Dashboard Header */}
       <header className="dashboard-header">
         <nav className="nav container">
           <div className="logo" onClick={handleBackToHome} style={{ cursor: 'pointer' }}>CalJam</div>
           <div className="current-time">
-            <div className="time">{currentTime}</div>
-            <div className="date">{currentDate}</div>
+            <div className="time">{new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</div>
+            <div className="date">{new Date().toLocaleDateString([], { weekday: 'short', month: 'short', day: 'numeric' })}</div>
           </div>
           <ul className="nav-links">
             <li><button onClick={handleBackToHome} className="nav-cta">Back to Home</button></li>
@@ -67,7 +110,7 @@ const Dashboard: React.FC = () => {
 
       <div className="dashboard-container container">
         <div className="dashboard-layout">
-          {/* Left Column - Add Activities/Assignments */}
+          {/* Left Column */}
           <div className="left-column">
             <div className="add-buttons">
               <button className="add-btn primary" onClick={addActivity}>
@@ -78,18 +121,17 @@ const Dashboard: React.FC = () => {
               </button>
             </div>
 
-            {/* Assignments Section */}
             <div className="assignments-section">
               <h3>Assignments</h3>
               <div className="assignments-list">
                 {assignments.map(assignment => (
-                  <div key={assignment.id} className="assignment-card">
+                  <div key={assignment.id} className={`assignment-card ${assignment.completed ? 'completed' : ''}`}>
                     <div className="assignment-info">
                       <h4>{assignment.name}</h4>
                       <span className="due-date">Due: {assignment.due}</span>
                     </div>
-                    <div className="assignment-actions">
-                      <button className="action-btn">⋮</button>
+                    <div className="assignment-status">
+                      {assignment.completed ? '✅' : '⏳'}
                     </div>
                   </div>
                 ))}
@@ -97,9 +139,8 @@ const Dashboard: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Column - Activities & Music Player */}
+          {/* Right Column */}
           <div className="right-column">
-            {/* Activities Section */}
             <div className="activities-section">
               <h3>Activities</h3>
               <div className="activities-list">
@@ -107,24 +148,59 @@ const Dashboard: React.FC = () => {
                   <div 
                     key={activity.id} 
                     className={`activity-card ${currentActivity === activity.name ? 'active' : ''}`}
-                    onClick={() => setCurrentActivity(activity.name)}
+                    onClick={() => handleActivitySelect(activity)}
                   >
                     <div className="activity-info">
                       <h4>{activity.name}</h4>
                       <span className="activity-time">{activity.time}</span>
+                      <p className="activity-desc">{activity.description}</p>
                     </div>
-                    <button 
-                      className="spotify-btn"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        openSpotify(activity.spotifyUrl);
-                      }}
-                    >
+                    <button className="spotify-play-btn">
                       <i className="fab fa-spotify"></i> Play
                     </button>
                   </div>
                 ))}
               </div>
+            </div>
+
+            {/* Spotify Player Section */}
+            <div className="player-section">
+              <div className="player-header">
+                <h3>Now Playing</h3>
+                <button className="toggle-player-btn" onClick={togglePlayerVisibility}>
+                  {isPlayerVisible ? 'Hide Player' : 'Show Player'}
+                </button>
+              </div>
+              
+              {isPlayerVisible && embedPlayer && (
+                <div className="spotify-embed-container">
+                  <iframe
+                    src={embedPlayer}
+                    width="100%"
+                    height="80"
+                    frameBorder="0"
+                    allow="encrypted-media"
+                    title="Spotify Player"
+                    className="spotify-embed"
+                  ></iframe>
+                  <div className="player-actions">
+                    <button 
+                      className="open-spotify-btn"
+                      onClick={() => window.open(`https://open.spotify.com/playlist/${activities.find(a => a.name === currentActivity)?.spotifyId}`, '_blank')}
+                    >
+                      <i className="fab fa-spotify"></i> Open in Spotify
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {isPlayerVisible && !embedPlayer && (
+                <div className="no-music-selected">
+                  <i className="fab fa-spotify"></i>
+                  <p>Select an activity to start playing music</p>
+                  <small>Music will play directly from Spotify</small>
+                </div>
+              )}
             </div>
 
             {/* Time Schedule */}
@@ -137,42 +213,6 @@ const Dashboard: React.FC = () => {
                     <div className="time-line"></div>
                   </div>
                 ))}
-              </div>
-            </div>
-
-            {/* Now Playing Section */}
-            <div className="now-playing-section">
-              <h3>Now Playing</h3>
-              <div className="now-playing-card">
-                <div className="track-info">
-                  <div className="track-cover">
-                    <i className="fab fa-spotify"></i>
-                  </div>
-                  <div className="track-details">
-                    <h4>{currentActivity}</h4>
-                    <p>CalJam • Spotify</p>
-                    <div className="progress-container">
-                      <div className="progress-bar">
-                        <div className="progress-fill"></div>
-                      </div>
-                      <div className="time-display">
-                        <span>1:23</span>
-                        <span>3:45</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="player-controls">
-                  <button className="control-btn">⏮</button>
-                  <button className="control-btn play">▶</button>
-                  <button className="control-btn">⏭</button>
-                  <button 
-                    className="spotify-open-btn"
-                    onClick={() => openSpotify(activities.find(a => a.name === currentActivity)?.spotifyUrl || '')}
-                  >
-                    Open in Spotify
-                  </button>
-                </div>
               </div>
             </div>
           </div>
