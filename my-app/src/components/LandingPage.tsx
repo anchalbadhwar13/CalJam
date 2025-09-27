@@ -1,20 +1,16 @@
 import React from 'react';
 import '../App.css';
 
-// Import your assets (adjust paths as needed)
-import AboutIcon from '../assets/icons/About.svg';
-import GetStartedIcon from '../assets/icons/Get Started.svg';
-// Import other assets as needed
-
 const LandingPage: React.FC = () => {
   return (
     <div className="landing-page">
       {/* Header/Navigation */}
       <header className="header">
         <nav className="nav container">
-          <div className="logo">mindstation</div>
+          <div className="logo">CalJam</div>
           <ul className="nav-links">
-            <li><a href="#about">why we do this</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#match">Task-Music Match</a></li>
             <li><a href="#about">About</a></li>
           </ul>
         </nav>
@@ -23,66 +19,92 @@ const LandingPage: React.FC = () => {
       {/* Hero Section */}
       <section className="hero">
         <div className="container">
-          <h1>Successful studying made simple</h1>
-          <p>Sometimes integrating study time into your routine can be overwhelming. We're here to help!</p>
-          <button className="cta-button">get started</button>
+          <h1>Match your tasks with the perfect music</h1>
+          <p>CalJam intelligently pairs your daily tasks with music that enhances focus, creativity, and productivity.</p>
+          <button className="cta-button">Start Jamming</button>
+          
+          {/* Music Visualizer */}
+          <div className="music-visualizer">
+            <div className="bar"></div>
+            <div className="bar"></div>
+            <div className="bar"></div>
+            <div className="bar"></div>
+            <div className="bar"></div>
+            <div className="bar"></div>
+            <div className="bar"></div>
+            <div className="bar"></div>
+          </div>
         </div>
       </section>
 
-      {/* Why Section */}
-      <section className="why-section" id="about">
+      {/* Features Section */}
+      <section className="features-section" id="how-it-works">
         <div className="container">
-          <h2 className="section-title">why we do this</h2>
+          <h2 className="section-title">How CalJam Works</h2>
           <div className="features">
             <div className="feature">
-              <div className="feature-icon">
-                {/* <img src={Vector12} alt="Feature 1" /> */}
-                <div className="placeholder-icon">📚</div>
-              </div>
-              <h3>Structured Learning</h3>
-              <p>Organize your study materials and create effective learning paths.</p>
+              <div className="feature-icon">🎯</div>
+              <h3>Task Analysis</h3>
+              <p>Tell us what you're working on - studying, coding, creative work, or exercise.</p>
             </div>
             <div className="feature">
-              <div className="feature-icon">
-                {/* <img src={Vector13} alt="Feature 2" /> */}
-                <div className="placeholder-icon">⏰</div>
-              </div>
-              <h3>Time Management</h3>
-              <p>Schedule study sessions that fit perfectly into your daily routine.</p>
+              <div className="feature-icon">🎵</div>
+              <h3>Music Matching</h3>
+              <p>Our algorithm finds the perfect music genre and tempo for your specific task.</p>
             </div>
             <div className="feature">
-              <div className="feature-icon">
-                {/* <img src={Vector14} alt="Feature 3" /> */}
-                <div className="placeholder-icon">📊</div>
-              </div>
-              <h3>Progress Tracking</h3>
-              <p>Monitor your learning journey and celebrate your achievements.</p>
+              <div className="feature-icon">⚡</div>
+              <h3>Boost Productivity</h3>
+              <p>Experience enhanced focus and efficiency with scientifically-backed music choices.</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* About Section */}
-      <section className="about-section">
+      {/* Task-Music Match Section
+      <section className="match-section" id="match">
         <div className="container">
-          <h2 className="section-title">About</h2>
-          <div className="about-content">
-            <div className="about-text">
-              <p>MindStation was created by students for students. We understand the challenges of balancing study time with other commitments.</p>
-              <p>Our mission is to make studying more accessible, organized, and effective for everyone.</p>
+          <h2 className="section-title">Perfect Task-Music Matches</h2>
+          <div className="match-grid">
+            <div className="match-card">
+              <h4>Deep Focus Work</h4>
+              <p>Complex problem-solving, coding, studying</p>
+              <span className="genre-tag">Lo-Fi Hip Hop</span>
             </div>
-            <div className="about-visual">
-              {/* <img src={Group2} alt="About MindStation" /> */}
-              <div className="placeholder-visual">🎯</div>
+            <div className="match-card">
+              <h4>Creative Tasks</h4>
+              <p>Design, writing, brainstorming</p>
+              <span className="genre-tag">Ambient Electronic</span>
+            </div>
+            <div className="match-card">
+              <h4>Physical Exercise</h4>
+              <p>Workouts, running, cleaning</p>
+              <span className="genre-tag">Upbeat Pop</span>
+            </div>
+            <div className="match-card">
+              <h4>Routine Tasks</h4>
+              <p>Email, admin, organization</p>
+              <span className="genre-tag">Indie Folk</span>
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Footer */}
       <footer className="footer">
         <div className="container">
-          <p>&copy; 2025 MindStation. All rights reserved.</p>
+          <div className="footer-content">
+            <div className="footer-logo">CalJam</div>
+            <div className="social-links">
+              <a href="#"><i className="fab fa-spotify"></i></a>
+              <a href="#"><i className="fab fa-apple"></i></a>
+              <a href="#"><i className="fab fa-soundcloud"></i></a>
+              <a href="#"><i className="fab fa-youtube"></i></a>
+            </div>
+          </div>
+          <div className="footer-bottom">
+            <p>&copy; 2025 CalJam. Match your rhythm to your tasks.</p>
+          </div>
         </div>
       </footer>
     </div>
