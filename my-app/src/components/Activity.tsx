@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../App.css';
-
+import { addActivity } from './backend';
 
 export const Activity: React.FC = () => {
   const navigate = useNavigate();
@@ -24,6 +24,25 @@ export const Activity: React.FC = () => {
     newRows[index][field as keyof typeof newRows[0]] = value;
     setRows(newRows);
   };
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const nameInput = document.getElementById("name") as HTMLInputElement;
+    const typeInput = document.getElementById("type") as HTMLInputElement;
+    const startTimeInput = document.getElementById("startTime") as HTMLInputElement;
+    const endTimeInput = document.getElementById("endTime") as HTMLInputElement;
+    const saveButton = document.getElementById("saveButton") as HTMLButtonElement;
+
+
+    saveButton.addEventListener("click", () => {
+      const name = nameInput.value.trim();
+      const type = typeInput.value.trim();
+      const startTime = startTimeInput.value.trim();
+      const endTime = endTimeInput.value.trim();
+
+      addActivity(name, type, startTime, endTime); 
+
+    });
+  });
 
   return (
     <div className="dashboard">
@@ -59,6 +78,7 @@ export const Activity: React.FC = () => {
             <div key={index} style={{ display: 'flex', gap: '10px', marginTop: '10px' }}>
               {/* Name input */}
               <input
+                id="name"
                 type="text"
                 placeholder="Enter Name"
                 value={row.activityname}
@@ -68,6 +88,7 @@ export const Activity: React.FC = () => {
 
               {/* Type dropdown */}
               <select
+                id="type"
                 value={row.type}
                 onChange={(e) => handleChange(index, 'type', e.target.value)}
                 style={{ width: '120px' }}
@@ -80,6 +101,7 @@ export const Activity: React.FC = () => {
 
               {/* Start Time input */}
               <input
+                id="startTime"
                 type="text"
                 placeholder="Enter Start Time"
                 value={row.startTime}
@@ -89,6 +111,7 @@ export const Activity: React.FC = () => {
 
               {/* End Time input */}
               <input
+                id="endTime"
                 type="text"
                 placeholder="Enter End Time"
                 value={row.endTime}
@@ -99,7 +122,10 @@ export const Activity: React.FC = () => {
           ))}
 
           <div style={{ marginTop: '20px' }}>
-            <button className="save-btn">Save</button>
+            <button
+              id="saveButton"
+              className="save-btn"
+            >Save</button>
             <button className="back-btn" onClick={handleBack}>Back</button>
           </div>
         </div>
