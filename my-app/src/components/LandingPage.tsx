@@ -1,16 +1,23 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../App.css';
 
 const LandingPage: React.FC = () => {
+  
+   const navigate = useNavigate();
+
+  const handleStartJamming = () => {
+    navigate('/Dashboard');
+  };
+  
   return (
-    <div className="landing-page">
+      <div className="landing-page">
       {/* Header/Navigation */}
       <header className="header">
         <nav className="nav container">
           <div className="logo">CalJam</div>
           <ul className="nav-links">
             <li><a href="#how-it-works">How It Works</a></li>
-            <li><a href="#match">Task-Music Match</a></li>
             <li><a href="#about">About</a></li>
           </ul>
         </nav>
@@ -21,7 +28,8 @@ const LandingPage: React.FC = () => {
         <div className="container">
           <h1>Match your tasks with the perfect music</h1>
           <p>CalJam intelligently pairs your daily tasks with music that enhances focus, creativity, and productivity.</p>
-          <button className="cta-button">Start Jamming</button>
+          <li><button className ="cta-button" onClick={handleStartJamming} >Get Started</button></li>
+
           
           {/* Music Visualizer */}
           <div className="music-visualizer">
