@@ -1,51 +1,13 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../App.css';
+import { activities } from './backend';
 
 const Dashboard: React.FC = () => {
   const navigate = useNavigate();
-  const [currentActivity, setCurrentActivity] = useState('Grym Spotify Playlist');
+  const [currentActivity, setCurrentActivity] = useState('Gym Spotify Playlist');
   const [embedPlayer, setEmbedPlayer] = useState<string>('');
   const [isPlayerVisible, setIsPlayerVisible] = useState(false);
-
-  // Spotify playlist IDs (just the ID part, not full URI)
-  const activities = [
-    { 
-      id: 1, 
-      name: 'Gym Spotify Playlist', 
-      time: '00:00 to 5:00am', 
-      spotifyId: '37i9dQZF1DXcBWIGoYBM5M', 
-      description: 'Chill lo-fi beats for focused work'
-    },
-    { 
-      id: 2, 
-      name: 'Focus Study Session', 
-      time: '9:00am to 11:00am', 
-      spotifyId: '37i9dQZF1DX8Uebhn9wzrS', 
-      description: 'Minimal electronic for deep concentration'
-    },
-    { 
-      id: 3, 
-      name: 'Deep Work', 
-      time: '2:00pm to 4:00pm', 
-      spotifyId: '37i9dQZF1DX3PFzdbtx1Us', 
-      description: 'Ambient sounds for programming'
-    },
-    { 
-      id: 4, 
-      name: 'Workout Mix', 
-      time: '6:00pm to 7:00pm', 
-      spotifyId: '37i9dQZF1DX76Wlfdnj7AP', 
-      description: 'Energetic tracks for exercise'
-    },
-    { 
-      id: 5, 
-      name: 'Relaxing Piano', 
-      time: '8:00pm to 10:00pm', 
-      spotifyId: '37i9dQZF1DX4sWSpwq3LiO', 
-      description: 'Calm piano for winding down'
-    }
-  ];
 
   const assignments = [
     { id: 1, name: 'Math Homework', due: 'Tomorrow 10:00am', completed: false },
@@ -136,8 +98,9 @@ const Dashboard: React.FC = () => {
                   >
                     <div className="activity-info">
                       <h4>{activity.name}</h4>
-                      <span className="activity-time">{activity.time}</span>
-                      <p className="activity-desc">{activity.description}</p>
+                      <span className="activity-time">{activity.timeStart}</span>
+                      <span className="activity-time">{activity.timeEnd}</span>
+                      <p className="activity-desc">{activity.activityType}</p>
                     </div>
                     <button className="spotify-play-btn">
                       <i className="fab fa-spotify"></i> Play
