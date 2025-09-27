@@ -3,22 +3,27 @@ import { useNavigate } from 'react-router-dom';
 import '../App.css';
 
 const LandingPage: React.FC = () => {
-  
-   const navigate = useNavigate();
+  const navigate = useNavigate();
 
-  const handleStartJamming = () => {
-    navigate('/Dashboard');
+  const handleGetStarted = () => {
+    navigate('/dashboard');
   };
-  
+
+  const handleDashboardNav = () => {
+    navigate('/dashboard');
+  };
+
   return (
-      <div className="landing-page">
+    <div className="landing-page">
       {/* Header/Navigation */}
       <header className="header">
         <nav className="nav container">
           <div className="logo">CalJam</div>
           <ul className="nav-links">
             <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#match">Task-Music Match</a></li>
             <li><a href="#about">About</a></li>
+          {/*}  <li><button onClick={handleDashboardNav} className="nav-cta">Dashboard</button></li> */}
           </ul>
         </nav>
       </header>
@@ -28,8 +33,9 @@ const LandingPage: React.FC = () => {
         <div className="container">
           <h1>Match your tasks with the perfect music</h1>
           <p>CalJam intelligently pairs your daily tasks with music that enhances focus, creativity, and productivity.</p>
-          <li><button className ="cta-button" onClick={handleStartJamming} >Get Started</button></li>
-
+          <button className="cta-button" onClick={handleGetStarted}>
+            Get Started
+          </button>
           
           {/* Music Visualizer */}
           <div className="music-visualizer">
@@ -69,34 +75,6 @@ const LandingPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Task-Music Match Section
-      <section className="match-section" id="match">
-        <div className="container">
-          <h2 className="section-title">Perfect Task-Music Matches</h2>
-          <div className="match-grid">
-            <div className="match-card">
-              <h4>Deep Focus Work</h4>
-              <p>Complex problem-solving, coding, studying</p>
-              <span className="genre-tag">Lo-Fi Hip Hop</span>
-            </div>
-            <div className="match-card">
-              <h4>Creative Tasks</h4>
-              <p>Design, writing, brainstorming</p>
-              <span className="genre-tag">Ambient Electronic</span>
-            </div>
-            <div className="match-card">
-              <h4>Physical Exercise</h4>
-              <p>Workouts, running, cleaning</p>
-              <span className="genre-tag">Upbeat Pop</span>
-            </div>
-            <div className="match-card">
-              <h4>Routine Tasks</h4>
-              <p>Email, admin, organization</p>
-              <span className="genre-tag">Indie Folk</span>
-            </div>
-          </div>
-        </div>
-      </section> */}
 
       {/* Footer */}
       <footer className="footer">
