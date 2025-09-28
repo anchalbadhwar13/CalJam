@@ -7,7 +7,7 @@ export const Activity: React.FC = () => {
   const navigate = useNavigate();
 
   const handleBack = () => {
-    navigate('/');
+    navigate('/dashboard');
   };
 
   // State for each row
@@ -40,19 +40,18 @@ export const Activity: React.FC = () => {
   };
 
   return (
-    <div className="dashboard">
+    <div className="activity">
       {/* Header */}
       <header className="header">
         <nav className="nav container">
           <div className="logo">CalJam</div>
           <ul className="nav-links">
-            {/* <li><a href="#timetable">Timetable</a></li> */}
             <li><button className="cta-button" onClick={handleBack}>Back</button></li>
           </ul>
         </nav>
       </header>
 
-      {/* Dashboard Content */}
+      {/* Activity Content */}
       <section className="container" style={{ textAlign: 'center', paddingTop: '50px' }}>
         <h1>Activity</h1>
         <p>Plan your day and match tasks with music</p>

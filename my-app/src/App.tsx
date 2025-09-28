@@ -13,10 +13,10 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          {/* +++ ADD THESE TWO NEW ROUTES +++ */}
+         
           <Route path="/activity" element={<Activity />} />
           <Route path="/assignment" element={<Assignment />} />
-          {/* +++ END OF NEW ROUTES +++ */}
+          
         </Routes>
       </div>
     </Router>
