@@ -6,7 +6,7 @@ export const Assignment: React.FC = () => {
   const navigate = useNavigate();
 
   const handleBack = () => {
-    navigate('/');
+    navigate('/dashboard');
   };
 
   // State for each row
@@ -25,7 +25,7 @@ export const Assignment: React.FC = () => {
   };
 
   return (
-    <div className="dashboard">
+    <div className="assignment">
       {/* Header */}
       <header className="header">
         <nav className="nav container">
@@ -36,7 +36,7 @@ export const Assignment: React.FC = () => {
         </nav>
       </header>
 
-      {/* Dashboard Content */}
+      {/* Assignment Content */}
       <section className="container" style={{ textAlign: 'center', paddingTop: '50px' }}>
         <h1>Assignments</h1>
         <p>Manage your assignments and deadlines</p>

@@ -3,27 +3,22 @@ import { useNavigate } from 'react-router-dom';
 import '../App.css';
 
 const LandingPage: React.FC = () => {
-  const navigate = useNavigate();
+  
+   const navigate = useNavigate();
 
-  const handleGetStarted = () => {
-    navigate('/dashboard');
+  const handleStartJamming = () => {
+    navigate('/Dashboard');
   };
-
-  const handleDashboardNav = () => {
-    navigate('/dashboard');
-  };
-
+  
   return (
-    <div className="landing-page">
+      <div className="landing-page">
       {/* Header/Navigation */}
       <header className="header">
         <nav className="nav container">
           <div className="logo">CalJam</div>
           <ul className="nav-links">
             <li><a href="#how-it-works">How It Works</a></li>
-            <li><a href="#match">Task-Music Match</a></li>
             <li><a href="#about">About</a></li>
-          {/*}  <li><button onClick={handleDashboardNav} className="nav-cta">Dashboard</button></li> */}
           </ul>
         </nav>
       </header>
@@ -33,9 +28,8 @@ const LandingPage: React.FC = () => {
         <div className="container">
           <h1>Match your tasks with the perfect music</h1>
           <p>CalJam intelligently pairs your daily tasks with music that enhances focus, creativity, and productivity.</p>
-          <button className="cta-button" onClick={handleGetStarted}>
-            Get Started
-          </button>
+          <li><button className ="cta-button" onClick={handleStartJamming} >Get Started</button></li>
+
           
           {/* Music Visualizer */}
           <div className="music-visualizer">
@@ -75,24 +69,63 @@ const LandingPage: React.FC = () => {
         </div>
       </section>
 
-
-      {/* Footer */}
-      <footer className="footer">
+      {/* Task-Music Match Section
+      <section className="match-section" id="match">
         <div className="container">
-          <div className="footer-content">
-            <div className="footer-logo">CalJam</div>
-            <div className="social-links">
-              <a href="#"><i className="fab fa-spotify"></i></a>
-              <a href="#"><i className="fab fa-apple"></i></a>
-              <a href="#"><i className="fab fa-soundcloud"></i></a>
-              <a href="#"><i className="fab fa-youtube"></i></a>
+          <h2 className="section-title">Perfect Task-Music Matches</h2>
+          <div className="match-grid">
+            <div className="match-card">
+              <h4>Deep Focus Work</h4>
+              <p>Complex problem-solving, coding, studying</p>
+              <span className="genre-tag">Lo-Fi Hip Hop</span>
+            </div>
+            <div className="match-card">
+              <h4>Creative Tasks</h4>
+              <p>Design, writing, brainstorming</p>
+              <span className="genre-tag">Ambient Electronic</span>
+            </div>
+            <div className="match-card">
+              <h4>Physical Exercise</h4>
+              <p>Workouts, running, cleaning</p>
+              <span className="genre-tag">Upbeat Pop</span>
+            </div>
+            <div className="match-card">
+              <h4>Routine Tasks</h4>
+              <p>Email, admin, organization</p>
+              <span className="genre-tag">Indie Folk</span>
             </div>
           </div>
-          <div className="footer-bottom">
-            <p>&copy; 2025 CalJam. Match your rhythm to your tasks.</p>
-          </div>
         </div>
-      </footer>
+      </section> */}
+
+      {/* Footer */}
+<footer className="footer" id="about">
+  <div className="container">
+    <div className="footer-content">
+      
+      <div className="social-links">
+        <a href="#"><i className="fab fa-spotify"></i></a>
+        <a href="#"><i className="fab fa-apple"></i></a>
+        <a href="#"><i className="fab fa-soundcloud"></i></a>
+        <a href="#"><i className="fab fa-youtube"></i></a>
+      </div>
+    </div>
+ 
+      <p>We’re a group of music-loving, code-crafting, caffeine-powered humans on a mission to make planning your day as fun as your favorite playlist! Whether it’s studying, gaming, or dancing like no one’s watching, CalJam keeps your schedule on beat.</p>
+      <h2>Meet the team ft CalJam</h2>
+      <p>Anchal Badhwar</p>
+      <p>Sambhav Jain</p>
+      <p>Hayden McGuire</p>
+      <p>Manya Asri</p>
+      
+      <div className="footer-logo">CalJam</div>
+         <div className="footer-bottom">
+    </div>
+    <p>&copy; 2025 CalJam. Match your rhythm to your tasks.</p>
+  </div>
+</footer>
+
+      
     </div>
   );
 };
