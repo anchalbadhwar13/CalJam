@@ -31,6 +31,7 @@ export const Activity: React.FC = () => {
     const endTime = endTimeInput.value.trim();
 
     addActivity(name, type, startTime, endTime); 
+    navigate('/dashboard');
   };
 
   // Options for type dropdown
