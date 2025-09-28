@@ -15,6 +15,20 @@ export const Activity: React.FC = () => {
     { activityname: '', startTime: '', endTime: '', type: '' },
   ]);
 
+  const handleSubmit = () => {
+    const nameInput = document.getElementById("name") as HTMLInputElement;
+    const typeInput = document.getElementById("type") as HTMLInputElement;
+    const startTimeInput = document.getElementById("startTime") as HTMLInputElement;
+    const endTimeInput = document.getElementById("endTime") as HTMLInputElement;
+
+    const name = nameInput.value.trim();
+    const type = typeInput.value.trim();
+    const startTime = startTimeInput.value.trim();
+    const endTime = endTimeInput.value.trim();
+
+    addActivity(name, type, startTime, endTime); 
+  };
+
   // Options for type dropdown
   const typeOptions = ['Study', 'Workout', 'Yoga', 'Commute', 'Cooking', 'Games', 'Party', 'Sleep'];
 
@@ -24,25 +38,6 @@ export const Activity: React.FC = () => {
     newRows[index][field as keyof typeof newRows[0]] = value;
     setRows(newRows);
   };
-
-  document.addEventListener("DOMContentLoaded", () => {
-    const nameInput = document.getElementById("name") as HTMLInputElement;
-    const typeInput = document.getElementById("type") as HTMLInputElement;
-    const startTimeInput = document.getElementById("startTime") as HTMLInputElement;
-    const endTimeInput = document.getElementById("endTime") as HTMLInputElement;
-    const saveButton = document.getElementById("saveButton") as HTMLButtonElement;
-
-
-    saveButton.addEventListener("click", () => {
-      const name = nameInput.value.trim();
-      const type = typeInput.value.trim();
-      const startTime = startTimeInput.value.trim();
-      const endTime = endTimeInput.value.trim();
-
-      addActivity(name, type, startTime, endTime); 
-
-    });
-  });
 
   return (
     <div className="dashboard">
@@ -125,8 +120,9 @@ export const Activity: React.FC = () => {
             <button
               id="saveButton"
               className="save-btn"
+              type = "submit"
             >Save</button>
-            <button className="back-btn" onClick={handleBack}>Back</button>
+            <button className="back-btn" onClick={handleSubmit}>Back</button>
           </div>
         </div>
       </section>
