@@ -12,7 +12,6 @@ const Dashboard: React.FC = () => {
   const assignments = [
     { id: 1, name: 'Math Homework', due: 'Tomorrow 10:00am', completed: false },
     { id: 2, name: 'Science Project', due: 'Oct 3, 2:00pm', completed: false },
-    { id: 3, name: 'English Essay', due: 'Oct 5, 5:00pm', completed: true }
   ];
 
   

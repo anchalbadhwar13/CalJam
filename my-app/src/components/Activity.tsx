@@ -10,6 +10,10 @@ export const Activity: React.FC = () => {
     navigate('/dashboard');
   };
 
+  const handleBackToHome = () => {
+    navigate('/');
+  };
+
   // State for each row
   const [rows, setRows] = useState([
     { activityname: '', startTime: '', endTime: '', type: '' },
@@ -42,11 +46,15 @@ export const Activity: React.FC = () => {
   return (
     <div className="activity">
       {/* Header */}
-      <header className="header">
+    <header className="header">
         <nav className="nav container">
-          <div className="logo">CalJam</div>
+          <div className="logo" onClick={handleBackToHome} style={{ cursor: 'pointer' }}>CalJam</div>
+          <div className="current-time">
+            <div className="time">{new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</div>
+            <div className="date">{new Date().toLocaleDateString([], { weekday: 'short', month: 'short', day: 'numeric' })}</div>
+          </div>
           <ul className="nav-links">
-            <li><button className="cta-button" onClick={handleBack}>Back</button></li>
+            <li><button onClick={handleBackToHome} className="nav-cta">Back to Home</button></li>
           </ul>
         </nav>
       </header>
@@ -119,9 +127,10 @@ export const Activity: React.FC = () => {
             <button
               id="saveButton"
               className="save-btn"
+              onClick={handleSubmit}
               type = "submit"
             >Save</button>
-            <button className="back-btn" onClick={handleSubmit}>Back</button>
+            <button className="back-btn" onClick={handleBack}>Back</button>
           </div>
         </div>
       </section>

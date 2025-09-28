@@ -8,6 +8,9 @@ export const Assignment: React.FC = () => {
   const handleBack = () => {
     navigate('/dashboard');
   };
+  const handleBackToHome = () => {
+    navigate('/');
+  };
 
   // State for each row
   const [rows, setRows] = useState([
@@ -29,9 +32,13 @@ export const Assignment: React.FC = () => {
       {/* Header */}
       <header className="header">
         <nav className="nav container">
-          <div className="logo">CalJam</div>
+          <div className="logo" onClick={handleBackToHome} style={{ cursor: 'pointer' }}>CalJam</div>
+          <div className="current-time">
+            <div className="time">{new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</div>
+            <div className="date">{new Date().toLocaleDateString([], { weekday: 'short', month: 'short', day: 'numeric' })}</div>
+          </div>
           <ul className="nav-links">
-            <li><button className="cta-button" onClick={handleBack}>Back</button></li>
+            <li><button onClick={handleBackToHome} className="nav-cta">Back to Home</button></li>
           </ul>
         </nav>
       </header>

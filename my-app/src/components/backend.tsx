@@ -72,7 +72,7 @@ export function addActivity(name: string, activityType: string, timeStart: strin
     activity.setName(name); 
     activity.setSpotifyId(generateSpotifyPlaylistHyperlink(activityType)); 
     activity.setActivityType(activityType); 
-    activity.setTimeStart(timeStart); 
+    activity.setTimeStart(timeStart.concat(" - ")); 
     activity.setTimeEnd(timeEnd); 
 
     activities.push(activity); 
