@@ -1,9 +1,7 @@
-# CalJam
-A little match-up between tasks and music!!!!!!!
-# CalJam
-A little match-up between tasks and music!!!!!!!
 
-# CalJam  
+# CalJam
+A little match-up between tasks and music!!!!!!!
+ 
 
 CalJam is a web application that integrates a daily activity tracker with music playlists from Spotify. It brings together two areas of everyday life: time management and music, by aligning user activities with curated playlists that complement the task at hand.  
 
